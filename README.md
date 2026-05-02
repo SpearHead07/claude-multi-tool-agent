@@ -167,4 +167,4 @@ MIT — see [LICENSE](LICENSE) file.
 
 Built by **Ashish** as part of a 30-day journey to AI Engineer.
 
-🔗 [LinkedIn](https://www.linkedin.com/in/YOUR_USERNAME) · [GitHub](https://github.com/YOUR_USERNAME)
+🔗 [LinkedIn](https://www.linkedin.com/in/ashish-srimal-95605698/?skipRedirect=true) · [GitHub](https://github.com/SpearHead07)
