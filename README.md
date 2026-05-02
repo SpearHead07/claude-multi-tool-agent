@@ -9,14 +9,6 @@ A production-ready AI agent built with **Anthropic Claude** and **LangGraph** â€
 
 ---
 
-## Demo
-
-![Demo](assets/demo.gif)
-
-> *Replace `assets/demo.gif` with a 10-second screen recording of the CLI in action.*
-
----
-
 ## Overview
 
 Most LLM tutorials show you how to call an API. Few show you how to build an agent that handles failure gracefully, routes between multiple tools intelligently, and produces structured logs you can debug in production.
