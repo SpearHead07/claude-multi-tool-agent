@@ -145,15 +145,52 @@ This is the agent's nervous system — debugging without it is impossible. Sever
 
 ---
 
-## Future Work
+## API Usage
 
-- [ ] Add a `web_search` tool with DuckDuckGo or Tavily
-- [ ] Add memory / multi-turn conversation persistence (LangGraph `MemorySaver` → SQLite)
-- [ ] Build a Streamlit UI for non-technical users
-- [ ] Add human-in-the-loop interrupts before destructive tool calls
-- [ ] Write unit tests for each tool (`pytest`)
-- [ ] Add automated evals to score agent responses against a fixed test set
-- [ ] Deploy to Render or Railway with proper secret management
+The agent can be exposed as a FastAPI web service.
+
+### Start the server
+
+```bash
+uvicorn src.api:app --port 8000
+```
+
+Visit `http://127.0.0.1:8000/docs` for the interactive Swagger UI.
+
+### Endpoints
+
+| Method | Path | Description |
+|---|---|---|
+| GET  | `/`             | Health check |
+| GET  | `/docs`         | Interactive API documentation (Swagger UI) |
+| POST | `/chat`         | Send a query, get a JSON response |
+| POST | `/chat/stream`  | Send a query, stream tokens via Server-Sent Events |
+
+### Example: synchronous chat
+
+```bash
+curl -X POST http://127.0.0.1:8000/chat \
+  -H "Content-Type: application/json" \
+  -d '{"query": "what is 25 * 4"}'
+```
+
+Response:
+```json
+{
+  "answer": "25*4 = 100",
+  "model": "claude-opus-4-5"
+}
+```
+
+### Example: streaming chat
+
+```bash
+curl -N -X POST http://127.0.0.1:8000/chat/stream \
+  -H "Content-Type: application/json" \
+  -d '{"query": "write a short poem"}'
+```
+
+Response: a stream of `data:` events, terminated by `event: done`.
 
 ---
 
